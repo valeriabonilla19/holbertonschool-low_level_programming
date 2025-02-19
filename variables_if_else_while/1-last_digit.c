@@ -1,32 +1,34 @@
-#include <stdlb.h>
+#include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 
 /**
-* main - Entry point of the program 
-*
-*Description: This program assigns a random number to n and prints
-*the last digit with a specific message based on its value.
-*
-*Return:Always 0 (Success)
-/*
+ * main - print if the number is positive, zero, or negative
+ *
+ * Description: using the main function
+ * this program prints "programming is positive, zero, or negative
+ * Return: 0
+ */
 int main(void)
 {
-int n, last_digit;
+int n;
+int l;
 
 srand(time(0));
 n = rand() - RAND_MAX / 2;
-last digit  = n % 10;
+l = n % 10;
 
-printf("The last digit of %d is %d", n, last_digit);
-
-if (last_digit > 5)
+if (l > 5)
 {
-printf(" and is greater than 5\n");
-else is (last_digit == 0)
-printf(" and is 0\n");
+printf("Last digit of %d is %d and is greater than 5\n", n, l);
+}
+else if (l == 0)
+{
+printf("Last digit of %d is %d and is 0\n", n, l);
+}
 else
-printf(" and is less than 6 and not 0\n");
-
+{
+printf("Last digit of %d is %d and is less than 6 and not 0\n",  n, l);
+}
 return (0);
 }
