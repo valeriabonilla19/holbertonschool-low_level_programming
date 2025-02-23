@@ -1,0 +1,25 @@
+#include"main.h"
+
+/**
+* Function that checks for lowercase character
+*
+* Description: Uses _putchar to display '1' for lowercase and '0'
+*
+* Return: 1 id c is lowercase, 0 otherwise
+*/
+
+int _islower(int c)
+{
+if (c >= n 97 && c <= 122)
+{
+_putchar('1');
+_putchar('n');
+return (1);
+}
+else
+{
+_putchar('0');
+_putchar('\n');
+return (0);
+}
+}
