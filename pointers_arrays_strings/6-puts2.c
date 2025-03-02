@@ -12,9 +12,9 @@ void puts2(char *str)
 int i;
 if (str == NULL)
 return;
-for (i = 0; str[i] != '\0'; i += 2)
+for (i = 0; str[i] != '\0'; i++)
 {
-if (i % 2 == 0) 
+if (str[i] >= 32 && str[i] <= 126 && i % 2 == 0)
 _putchar(str[i]);
 }
 _putchar('\n');
