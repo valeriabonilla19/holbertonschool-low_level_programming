@@ -21,7 +21,7 @@ return (NULL);
 size = max - min + 1;
 
 /* Allocate memory for the array */
-arr = malloc(size * sizeof(int));
+arr = malloc(size *sizeof(int));
 
 /* If malloc fails, return NULL */
 if (arr == NULL)
