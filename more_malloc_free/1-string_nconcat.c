@@ -1,5 +1,21 @@
 #include <stdlib.h>
-#include <string.h>
+
+/**
+* _strlen - A custom function to calculate the length of a string.
+* @s: The string to calculate the length for.
+*
+* Return: The length of the string.
+*/
+unsigned int _strlen(char *s)
+{
+unsigned int len = 0;
+
+/* If the string is not NULL, iterate to find its length */
+while (s && s[len] != '\0')
+len++;
+
+return (len);
+}
 
 /**
 * string_nconcat - Concatenates two strings.
@@ -24,8 +40,8 @@ s1 = "";
 if (s2 == NULL)
 s2 = "";
 
-len1 = strlen(s1);  /* Length of s1 */
-len2 = strlen(s2);  /* Length of s2 */
+len1 = _strlen(s1);  /* Use custom _strlen function */
+len2 = _strlen(s2);  /* Use custom _strlen function */
 
 /* If n is greater than or equal to the length of s2, use the entire s2 */
 if (n >= len2)
