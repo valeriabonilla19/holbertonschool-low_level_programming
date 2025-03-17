@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+/**
+* struct dog - structure to store information about a dog
+* @name: pointer to a string containing the dog's name
+* @age: float representing the dog's age
+* @owner: pointer to a string containing the dog's owner's name
+*/
+struct dog
+{
+char *name;
+float age;
+char *owner;
+};
+
+int main(void)
+{
+struct dog my_dog = {"Buddy", 3.5, "John"};
+
+printf("Dog's Name: %s\n", my_dog.name);
+printf("Dog's Age: %.1f\n", my_dog.age);
+printf("Dog's Owner: %s\n", my_dog.owner);
+
+return (0);
+}
