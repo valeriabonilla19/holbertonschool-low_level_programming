@@ -4,6 +4,34 @@
 #include "dog.h"
 
 /**
+* _strdup - Duplicates a string manually
+* @str: The input string
+*
+* Return: Pointer to the new string, or NULL if it fails
+*/
+char *_strdup(char *str)
+{
+char *dup;
+int i, len = 0;
+
+if (!str)
+return (NULL);
+
+while (str[len]) /* Calculate length manually */
+len++;
+
+dup = malloc(len + 1);
+if (!dup)
+return (NULL);
+
+for (i = 0; i < len; i++) /* Copy manually */
+dup[i] = str[i];
+
+dup[len] = '\0';
+return (dup);
+}
+
+/**
 * new_dog - Creates a new dog structure
 * @name: Name of the dog
 * @age: Age of the dog
@@ -23,22 +51,20 @@ new_dog = malloc(sizeof(dog_t));
 if (!new_dog)
 return (NULL);
 
-name_copy = malloc(strlen(name) + 1);
+name_copy = _strdup(name);
 if (!name_copy)
 {
 free(new_dog);
 return (NULL);
 }
-strcpy(name_copy, name);
 
-owner_copy = malloc(strlen(owner) + 1);
+owner_copy = _strdup(owner);
 if (!owner_copy)
 {
 free(name_copy);
 free(new_dog);
 return (NULL);
 }
-strcpy(owner_copy, owner);
 
 new_dog->name = name_copy;
 new_dog->age = age;
