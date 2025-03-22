@@ -1,0 +1,17 @@
+#include "function_pointers.h"
+#include <stdio.h>
+
+/**
+* print_name - Prints a name using a given function pointer
+* @name: The name to print
+*@f: Pointer to a function that takes a char * argument
+*
+* Description: This function checks if both @name and @f are not NULL
+* before calling the function pointer @f with @name.
+*/
+
+void print_name(char *name, void (*f)(char *))
+{
+if (name != NULL && f != NULL)
+f(name);
+}
