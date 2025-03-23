@@ -17,17 +17,8 @@ op_t ops[] = {
 {NULL, NULL}
 };
 int i = 0;
-
-/* Ensure s is exactly one character long */
-if (s == NULL || s[1] != '\0')
-return (NULL);
-
-while (ops[i].op != NULL)
-{
-if (*s == *(ops[i].op))
-return (ops[i].f);
+while (ops[i].op != NULL && !(s && s[1] == '\0' && *s == *(ops[i].op)))
 i++;
-}
 
-return (NULL);
+return (ops[i].f);
 }
