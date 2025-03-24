@@ -51,7 +51,8 @@ unsigned int i = 0, j;
 char *separator = "";
 
 /* Struct to map format specifiers to functions */
-struct printer {
+struct printer
+{
 char spec;
 void (*func)(va_list);
 } funcs[] = {
