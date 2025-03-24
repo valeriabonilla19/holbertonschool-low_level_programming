@@ -49,7 +49,6 @@ void print_all(const char * const format, ...)
 va_list args;
 unsigned int i = 0, j;
 char *separator = "";
-
 /* Struct to map format specifiers to functions */
 /**
 * struct printer - Maps format specifiers to corresponding functions.
@@ -67,9 +66,7 @@ void (*func)(va_list);
 {'s', print_string},
 {'\0', NULL}
 };
-
 va_start(args, format);
-
 while (format && format[i])
 {
 j = 0;
@@ -86,7 +83,6 @@ j++;
 }
 i++;
 }
-
 va_end(args);
 printf("\n");
 }
