@@ -15,37 +15,41 @@ char c;
 int d;
 float f;
 char *s;
+int printed = 0;
 
 va_start(args, format);
 
 while (format && format[i] != '\0')
 {
-if (i > 0)
+if (printed)
 printf(", ");
 
-if (format[i] == 'c')
+switch (format[i])
 {
+case 'c':
 c = va_arg(args, int);
 printf("%c", c);
-}
-else if (format[i] == 'i')
-{
+break;
+case 'i':
 d = va_arg(args, int);
 printf("%d", d);
-}
-else if (format[i] == 'f')
-{
+break;
+case 'f':
 f = va_arg(args, double);
 printf("%f", f);
-}
-else if (format[i] == 's')
-{
+break;
+case 's':
 s = va_arg(args, char *);
 if (s == NULL)
 printf("(nil)");
 else
 printf("%s", s);
+break;
+default:
+break;
 }
+
+printed = 1;
 i++;
 }
 
