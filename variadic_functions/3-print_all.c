@@ -2,44 +2,85 @@
 #include <stdio.h>
 
 /**
-* print_all - prints anything based on the format specified
-* @format: list of types of arguments passed to the function
-* 
-* Return: Nothing.
+* print_char - Prints a char.
+* @args: The list of arguments.
+*/
+void print_char(va_list args)
+{
+printf("%c", va_arg(args, int));
+}
+
+/**
+* print_int - Prints an integer.
+* @args: The list of arguments.
+*/
+void print_int(va_list args)
+{
+printf("%d", va_arg(args, int));
+}
+
+/**
+* print_float - Prints a float.
+* @args: The list of arguments.
+*/
+void print_float(va_list args)
+{
+printf("%f", va_arg(args, double));
+}
+
+/**
+* print_string - Prints a string.
+* @args: The list of arguments.
+*/
+void print_string(va_list args)
+{
+char *str = va_arg(args, char *);
+if (!str)
+str = "(nil)";
+printf("%s", str);
+}
+
+/**
+* print_all - Prints anything based on the given format.
+* @format: A list of types of arguments passed to the function.
 */
 void print_all(const char * const format, ...)
 {
 va_list args;
-int i = 0;
-char *s;
-int printed = 0;
+unsigned int i = 0, j;
+char *separator = "";
+
+/* Struct to map format specifiers to functions */
+struct printer {
+char spec;
+void (*func)(va_list);
+} funcs[] = {
+{'c', print_char},
+{'i', print_int},
+{'f', print_float},
+{'s', print_string},
+{'\0', NULL}
+};
 
 va_start(args, format);
 
-while (format && format[i] != '\0')
+while (format && format[i])
 {
-if (printed)
-printf(", ");
-
-if (format[i] == 'c')
-printf("%c", va_arg(args, int));
-if (format[i] == 'i')
-printf("%d", va_arg(args, int));
-if (format[i] == 'f')
-printf("%f", va_arg(args, double));
-if (format[i] == 's')
+j = 0;
+while (funcs[j].spec)
 {
-s = va_arg(args, char *);
-if (s == NULL)
-printf("(nil)");
-else
-printf("%s", s);
+if (format[i] == funcs[j].spec)
+{
+printf("%s", separator);
+funcs[j].func(args);
+separator = ", ";
+break;
 }
-
-printed = 1;
+j++;
+}
 i++;
 }
 
-printf("\n");
 va_end(args);
+printf("\n");
 }
