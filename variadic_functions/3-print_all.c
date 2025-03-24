@@ -51,6 +51,11 @@ unsigned int i = 0, j;
 char *separator = "";
 
 /* Struct to map format specifiers to functions */
+/**
+* struct printer - Maps format specifiers to corresponding functions.
+* @spec: The format specifier character (e.g., 'c', 'i', 'f', 's').
+* @func: The function that corresponds to the format specifier.
+*/
 struct printer
 {
 char spec;
